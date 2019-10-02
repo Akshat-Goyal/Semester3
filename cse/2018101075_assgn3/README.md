@@ -16,32 +16,18 @@ This is a linux shell written in C with basic functionalities like inbuilt comma
 
 ## Working Of Shell:
 
-1. Displays `username@systemname:current_directory`. Home Directory of shell is indicated by `~`
-2. `echo`, `cd`, `pwd`, `ls`, `pinfo`, `history`, `nightswatch`, `jobs`, `kjobs`, `overkill`, `quit`, `fg`, `bg`, `cronjob`, `setenv`, `unsetenv` is build manually.
-3. `pwd`. Prints present working directory.
-4. `cd <directoryPath>(optional)`. Changes the directory to <directoryPath>. For relative path only ../ or ./ or ~/ is allowed. Default directoryPath is pwd.
-5. `ls <flags>(optional) <directoryPath>(optional)`. Lists all the files and folders in the directory. Flags can be '-l' (to show long listing format) or '-a' (to show hidden files also). For relative path only ../ or ./ or ~/ is allowed. Default directoryPath is pwd.
-<<<<<<< HEAD
-6. `pinfo <pid>` (optional). Outputs:- pid, Process Status, memory, Executable Path
-7. `history <num>` (optional). Prints last max(num, 10) commands where num <= 20.
-8. `nightswatch <options> <command>`. Modified version of watch command. Ex: 'nightswatch -n 2 <command>'. Command can be:- interrupt, dirty. Press q for exit.
-9. `setenv <var> [value](optional)`. Sets environment variable with value. Default value is "". Ex: setenv x [2].
-10. `unsetenv <var>`. Unsets environment variable.
-11. `jobs`. Prints all currently existing jobs with their job_id and pid and job_name and its status.
-12. `kjobs <job_id> <sigalNumber>`. Kills job with given signal.
-=======
-6. `pinfo <pid>(optional)`. Outputs:- pid, Process Status, memory, Executable Path
-7. `history <num>(optional)`. Prints last max(num, 10) commands where num <= 20.
-8. `nightswatch <options> <command>`. Modified version of watch command. Ex: 'nightswatch -n 2 <command>'. Command can be:- interrupt, dirty. Press q for exit.
+1.  Displays `username@systemname:current_directory`. Home Directory of shell is indicated by `~`
+2.  `echo`, `cd`, `pwd`, `ls`, `pinfo`, `history`, `nightswatch`, `jobs`, `kjobs`, `overkill`, `quit`, `fg`, `bg`, `cronjob`, `setenv`, `unsetenv` is build manually.
+3.  `pwd`. Prints present working directory.
+4.  `cd <directoryPath>(optional)`. Changes the directory to `<directoryPath>`. For relative path only ../ or ./ or ~/ is allowed. Default directoryPath is `pwd`.
+5.  `ls <flags>(optional) <directoryPath>(optional)`. Lists all the files and folders in the directory. Flags can be '-l' (to show long listing format) or '-a' (to show hidden files also). For relative path only ../ or ./ or ~/ is allowed. Default directoryPath is `pwd`.
+6.  `pinfo <pid>` (optional). Outputs:- pid, Process Status, memory, Executable Path
+7.  `history <num>` (optional). Prints last max(num, 10) commands where num <= 20.
+8.  `nightswatch <options> <command>`. Modified version of watch command. Ex: 'nightswatch -n 2 `<command>`'. Command can be:- interrupt, dirty. Press q for exit.
 9.  `setenv <var> [value](optional)`. Sets environment variable with value. Default value is "". Ex: setenv x [2].
 10. `unsetenv <var>`. Unsets environment variable.
 11. `jobs`. Prints all currently existing jobs with their job_id and pid and job_name and its status.
-<<<<<<< HEAD
-12. `kjobs <job_id>` <sigalNumber>. Kills job with given signal.
->>>>>>> e234227cc758f877d66f7c8c738b32b6b4ba0856
-=======
 12. `kjobs <job_id> <sigalNumber>`. Kills job with given signal.
->>>>>>> 83db8cea0508872549f12cf6acf77abc249619d8
 13. `overkill`. Kills all background process with SIGINT.
 14. `fg <job_id>`. Brings the background process in the foreground.
 15. `bg <job_id>`. Runs the background process.
