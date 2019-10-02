@@ -1,0 +1,19 @@
+yes | yes
+jobs
+quit
+cronjob -c [ls] -t 5 -p 20
+firefox
+quit
+fg 1
+quit
+emacs
+jobs
+fg 1
+jobs
+fg 1
+quit
+firefox 
+jobs
+quit
+faffirefox 
+quit
