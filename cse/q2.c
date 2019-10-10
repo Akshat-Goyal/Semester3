@@ -84,12 +84,12 @@ void* serve_biryani(void* arg){
 	pthread_mutex_t * lock = &(table->lock);
 	while(status){
 		status = load_biryani(table);
-		printf("Serving Table %d is ready to serve biryani of capacity %d\n", table->id+1, table->p);
+		if(status) printf("Serving Table %d is ready to serve biryani of capacity %d\n", table->id+1, table->p);
 		while(status && table->p){
 			pthread_mutex_lock(lock);
 			table->slots = rand()%10%table->p + 1;
 			table->p -= table->slots;
-			printf("Serving Table %d has %d slots\n", table->id, table->slots);
+			printf("Serving Table %d has %d current_slots\n", table->id+1, table->slots);
 			pthread_mutex_unlock(lock);
 			status = ready_to_serve_table(table);
 		}
@@ -97,8 +97,9 @@ void* serve_biryani(void* arg){
 }
 
 void student_in_slot(Student* student){
-	printf("Student %d is allocated %dth slot of Serving Table %d\n", student->id+1, student->slot, student->tableid+1);
 	*(student->studentsToBeServed) -= 1;
+	while(student->tables[student->tableid].slots != 0 && *(student->studentsToBeServed) != 0);
+	printf("Student %d is allocated %dth slot of Serving Table %d\n", student->id+1, student->slot, student->tableid+1);
 }
 
 void *wait_for_slot(void* arg){
