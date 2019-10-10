@@ -1,16 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
 #include <sys/shm.h>
 #include <unistd.h>
 #include <wait.h>
-#include <limits.h>
-#include <fcntl.h>
-#include <time.h>
 #include <pthread.h>
-#include <inttypes.h>
-#include <math.h>
+
 
 struct thread_data{
 	int l, r, *arr;
@@ -171,6 +165,11 @@ void runsorts(int n){
     long double st = ts.tv_nsec/(1e9)+ts.tv_sec;
 
 	concurrentQuicksort(arr, 0, n-1);
+	printf("\nConcurrent Quicksort\n");
+	for(int i=0; i<n; i++){
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
 	shmdt(arr);
 	
 	clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
@@ -189,25 +188,35 @@ void runsorts(int n){
 
     pthread_create(&tid,NULL,threadedQuicksort,&a);
     pthread_join(tid,NULL);
+	printf("\nThreaded Quicksort\n");
+	for(int i=0; i<n; i++){
+		printf("%d ", brr[i]);
+	}
+	printf("\n");
 	free(brr);
 
 	en = ts.tv_nsec/(1e9)+ts.tv_sec;
-    printf("Time of Threaded Quicksort = %Lf\n", en - st);
+    printf("\nTime of Threaded Quicksort = %Lf\n", en - st);
 	long double t2 = en-st;
 
 	clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
     st = ts.tv_nsec/(1e9)+ts.tv_sec;
 
 	normalQuicksort(crr, 0, n-1);
+	printf("\nNormal Quicksort\n");
+	for(int i=0; i<n; i++){
+		printf("%d ", crr[i]);
+	}
+	printf("\n");
 	free(crr);
 
 	clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
     en = ts.tv_nsec/(1e9)+ts.tv_sec;
-    printf("Time of Normal Quicksort = %Lf\n", en - st);
+    printf("\nTime of Normal Quicksort = %Lf\n", en - st);
     long double t3 = en - st;
 
-	printf("Normal Quicksort ran:\n\t[ %Lf ] times faster than Concurrent Quicksort\n\t[ %Lf ] times faster than Threaded Concurrent Quicksort\n\n", t1/t3, t2/t3);
-    return NULL;
+	printf("\nNormal Quicksort ran:\n\t[ %Lf ] times faster than Concurrent Quicksort\n\t[ %Lf ] times faster than Threaded Concurrent Quicksort\n\n", t1/t3, t2/t3);
+    return;
 }
 
 int main(){
