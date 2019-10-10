@@ -97,7 +97,7 @@ void* serve_biryani(void* arg){
 }
 
 void student_in_slot(Student* student){
-	printf("Student %d is allocated %dth slot of Serving Table %d\n", student->id+1, student->slot, student->tableid);
+	printf("Student %d is allocated %dth slot of Serving Table %d\n", student->id+1, student->slot, student->tableid+1);
 	*(student->studentsToBeServed) -= 1;
 }
 
