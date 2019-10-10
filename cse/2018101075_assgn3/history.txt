@@ -1,19 +1,20 @@
-yes | yes
-jobs
-quit
-cronjob -c [ls] -t 5 -p 20
-firefox
-quit
-fg 1
-quit
-emacs
-jobs
-fg 1
-jobs
-fg 1
-quit
-firefox 
-jobs
 quit
 faffirefox 
+quit
+nightswatch -n 2 dirty
+exit
+nightswatch -n 2 interrupt
+uit
+quit
+nightswatch -n 2 interrupt
+exit
+history
+nightswatch -n 2 interrupt
+quit
+history
+nightswatch -n 2 interrupt
+exit
+history
+nightswatch -n 2 interrupt
+uit
 quit
