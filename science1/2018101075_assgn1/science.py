@@ -14,11 +14,11 @@ for i in range(1, 50):
         x = 0
         y = 0
         for k in range(0, i):
-            if random.random() > 0.5:
+            if random.random() >= 0.5:
                 x = x + 1
             else:
                 x = x - 1
-            if random.random() > 0.5:
+            if random.random() >= 0.5:
                 y = y + 1
             else:
                 y = y - 1
