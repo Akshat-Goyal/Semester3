@@ -1,20 +1,20 @@
+kjob 1 17
 quit
-faffirefox 
+ls
+ls -l ls.c
+ls ls.c
+ls main.c
+what the fuck
+code
 quit
-nightswatch -n 2 dirty
-exit
-nightswatch -n 2 interrupt
-uit
+ls -l ls.c
+ls -l ./
+ls -l ~
 quit
-nightswatch -n 2 interrupt
-exit
-history
-nightswatch -n 2 interrupt
+ls -l ./
 quit
-history
-nightswatch -n 2 interrupt
-exit
-history
-nightswatch -n 2 interrupt
-uit
+ls
+cd
+ls
+cd ../
 quit
