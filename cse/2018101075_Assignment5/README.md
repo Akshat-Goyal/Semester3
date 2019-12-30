@@ -1,3 +1,17 @@
+# REQUIREMENTS
+
++ linux shell
++ qemu
+
+
+# RUNNING
+
++ `SCHEDULER` can be `DEFAULT`, `PBS`, `FCFS`, `MLFQ`
++ run `make clean qemu SCHEDULER=DEFAULT`.
+
+
+# FUNCTIONS IMPLEMENTED
+
 ## TASK 1
 
 ### WAITX SYSCALL:

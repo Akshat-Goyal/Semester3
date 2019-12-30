@@ -278,7 +278,7 @@ fork(void)
 	// 	np->priority = np->pid/2;
 	// #endif
 
-	cprintf("\nChild with pid %d created\n", pid);
+	// cprintf("\nChild with pid %d created\n", pid);
 
 	acquire(&ptable.lock);
 	np->state = RUNNABLE;
@@ -473,7 +473,7 @@ scheduler(void)
 				c->proc = p;
 				switchuvm(p);
 				p->state = RUNNING;
-				cprintf("cpu %d, pname %s, pid %d, rtime %d\n", c->apicid, p->name, p->pid, p->rtime);
+				// cprintf("cpu %d, pname %s, pid %d, rtime %d\n", c->apicid, p->name, p->pid, p->rtime);
 				swtch(&(c->scheduler), p->context);
 				switchkvm();
 
@@ -506,7 +506,7 @@ scheduler(void)
 				c->proc = minP;
 				switchuvm(minP);
 				minP->state = RUNNING;
-				cprintf("cpu %d, pname %s, pid %d, rtime %d\n", c->apicid, minP->name, minP->pid, minP->rtime);
+				// cprintf("cpu %d, pname %s, pid %d, rtime %d\n", c->apicid, minP->name, minP->pid, minP->rtime);
 				swtch(&(c->scheduler), minP->context);
 				switchkvm();
 
@@ -541,7 +541,7 @@ scheduler(void)
 				switchuvm(lowP);
 				lowP->state = RUNNING;
 				lowP->num_run++;
-				cprintf("cpu %d, pname %s, pid %d, priority %d, rtime %d\n", c->apicid, lowP->name, lowP->pid, lowP->priority, lowP->rtime);
+				// cprintf("cpu %d, pname %s, pid %d, priority %d, rtime %d\n", c->apicid, lowP->name, lowP->pid, lowP->priority, lowP->rtime);
 				swtch(&(c->scheduler), lowP->context);
 				switchkvm();
 
@@ -564,7 +564,7 @@ scheduler(void)
 				switchuvm(p);
 				p->state = RUNNING;
 				p->stat.num_run++;
-				cprintf("cpu %d, pname %s, pid %d, in queue %d, rtime %d, waited %d\n", c->apicid, p->name, p->pid, p->priority, p->rtime, p->lwtime);
+				// cprintf("cpu %d, pname %s, pid %d, in queue %d, rtime %d, waited %d\n", c->apicid, p->name, p->pid, p->priority, p->rtime, p->lwtime);
 				swtch(&(c->scheduler), p->context);
 				switchkvm();
 
@@ -636,7 +636,7 @@ yield(void)
 		if(myproc()->lrtime >= prq[myproc()->priority].max_rtime){
 			if(myproc()->priority != (NPQ -1)){
 				myproc()->priority++;
-				cprintf("Demotion of %d pid to queue %d\n", myproc()->pid, myproc()->priority);
+				// cprintf("Demotion of %d pid to queue %d\n", myproc()->pid, myproc()->priority);
 			}	
 			myproc()->lrtime = myproc()->lwtime = 0;
 			myproc()->stat.current_queue = myproc()->priority;
@@ -686,7 +686,7 @@ aging_proc(){
 		while(prq[i].front != -1 && p->state == RUNNABLE && p->lwtime >= prq[i].max_wtime){
 			pq_pop(p);
 			p->priority--;
-			cprintf("promotion of %d pid to queue %d\n", p->pid, p->priority);
+			// cprintf("promotion of %d pid to queue %d\n", p->pid, p->priority);
 			p->stat.current_queue = p->priority;
 			p->lrtime = p->lwtime = 0;
 			pq_push(p);
